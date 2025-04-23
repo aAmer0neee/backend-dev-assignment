@@ -17,6 +17,7 @@ func main() {
 	flag.Parse()
 
 	info := exchange.New(*periodFlag)
+
 	info.Exchange()
 
 	fmt.Println("время работы", time.Since(timer))
