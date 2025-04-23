@@ -186,6 +186,7 @@ func (e *ExchangeInfo) printAverage() {
 
 			proc[v.Id] = true
 		}
+		break
 	}
 
 	fmt.Println()
