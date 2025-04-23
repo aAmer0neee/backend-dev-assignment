@@ -174,12 +174,19 @@ func (e *ExchangeInfo) printExchangeInfo() {
 }
 
 func (e *ExchangeInfo) printAverage() {
+	proc := make(map[string]bool)
+
 	for _, list := range e.ListValutes {
 		for _, v := range list.Valutes {
-			averageRate := e.AverageRub[v.Id]
-			fmt.Printf("%s (%s): %.6f RUB\n", v.Name, v.CharCode, averageRate)
+			if proc[v.Id] {
+				continue
+			}
+
+			fmt.Printf("%-20s %-5s: %.6f RUB\n", v.Name, v.CharCode, e.AverageRub[v.Id])
+
+			proc[v.Id] = true
 		}
 	}
 
-	fmt.Println("\n")
+	fmt.Println()
 }
